@@ -13,8 +13,6 @@ contract SegmentTreeHarness is WindfallSegmentTree {
         __SegmentTree_init();
     }
 
-
-
 /*
     function getNodeId(uint128 nodeCounter) public pure virtual returns(bytes16) {
     function _updateTreeAddNode() private {
@@ -30,8 +28,30 @@ contract SegmentTreeHarness is WindfallSegmentTree {
     function getUserById(uint256 id) public view returns (User memory) {
     function GetTree() external view returns(Node[] memory, bytes16[] memory, bytes16[][] memory, uint128[][] memory) {
 
+
+
+    Harness Functions: 
+    function UpdateTreeAddNode() external {
+    function UpdateTreeAddNodeReturn() external returns(uint128, uint128) {
+    function UpdateTreeAddUser(uint128 nftId) external {
+    function UpdateTreeAddValue(uint128 nftId, uint128 amount) external {
+    function UpdateTreeSubtractValue(uint128 nftId, uint128 amount) external {
+    function SearchTree(uint128 value) external returns (uint128) {
+    function LoopNodeChildren(bytes16 parentNode, uint128 cumValue, uint128 targetValue) external view returns(bytes16, uint128) {
+    function LoopNftChildren(bytes16 parent, uint128 cumValue, uint128 targetValue) internal view returns(uint128 nftId) {
+    function CreateUser(uint128 amount) external returns (User memory newUser, uint128) {
+    function GetNodeIndex(uint128 i) external view returns(bytes16){
+    function GetNodes(bytes16 i) external view returns(Node memory){
+    function GetNodeChildren(bytes16 i) external view returns(bytes16[] memory){
+    function GetNftChildren(bytes16 i) external view returns(uint128[] memory){
+    function GetUser(uint128 i) external view returns(User memory){
+    function GetNextNodeParent() external view returns(uint128) {
+    function GetNextNftParent() external view returns(uint128) {
+    function GetNextNodeId() external view returns(uint128) {
 */
 
+
+    // Private function
     function UpdateTreeAddNode() external {
                 // Get the next available parent
         bytes16 parent = nodeIndex[nextNodeParent]; 
@@ -54,7 +74,7 @@ contract SegmentTreeHarness is WindfallSegmentTree {
         }
     }
 
-
+    // Private function with extra return for testing
     function UpdateTreeAddNodeReturn() external returns(uint128, uint128) {
                 // Get the next available parent
         bytes16 parent = nodeIndex[nextNodeParent]; 
@@ -78,7 +98,6 @@ contract SegmentTreeHarness is WindfallSegmentTree {
 
         return (nextNodeId, nextNodeParent);
     }
-
 
     function UpdateTreeAddUser(uint128 nftId) external {
         _updateTreeAddUser(nftId);

@@ -53,7 +53,7 @@ contract Helpers is Test{
 
     function printNode(WindfallState.Node memory _node, bytes32 currentNode, uint256 _index) internal view {
         console.log("Node: ", _index);
-        console2.logBytes32(currentNode);
+        console.log("Node Id: ", currentNode);
         console.log("{");
         string memory sumString = string(abi.encodePacked("Sum: ", vm.toString(_node.sum)));
         string memory parentString = string(abi.encodePacked("Parent: ", vm.toString(_node.parentNode)));

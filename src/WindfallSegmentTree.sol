@@ -222,6 +222,8 @@ contract WindfallSegmentTree is WindfallState, Initializable {
         return users[id];
     }
 
+    // Function added for testing
+    // Allows tests to display the tree information
     function GetTree() external view returns(Node[] memory, bytes16[] memory, bytes16[][] memory, uint128[][] memory) {
         Node[] memory tree = new Node[](nextNodeId);
         bytes16[] memory currentNode = new bytes16[](nextNodeId);
