@@ -26,11 +26,17 @@ contract SegmentTreeTest is Test, Helpers {
         (, uint128 tokenTwo) = segmentTree.CreateUser(2.2e18);
         (, uint128 tokenThree) = segmentTree.CreateUser(3.3e18);
         (, uint128 tokenFour) = segmentTree.CreateUser(4.7e18);
+        (, uint128 tokenFive) = segmentTree.CreateUser(5.01e18);
+        (, uint128 tokenSix) = segmentTree.CreateUser(6.07e18);
+        (, uint128 tokenSeven) = segmentTree.CreateUser(7.03e18);
 
         segmentTree.UpdateTreeAddUser(tokenOne);
         segmentTree.UpdateTreeAddUser(tokenTwo);
         segmentTree.UpdateTreeAddUser(tokenThree);
         segmentTree.UpdateTreeAddUser(tokenFour);
+        segmentTree.UpdateTreeAddUser(tokenFive);
+        segmentTree.UpdateTreeAddUser(tokenSix);
+        segmentTree.UpdateTreeAddUser(tokenSeven);
 
         Helpers.printTree(_segmentTree);
 

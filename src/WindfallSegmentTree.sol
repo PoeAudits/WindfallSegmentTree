@@ -91,6 +91,7 @@ contract WindfallSegmentTree is WindfallState, Initializable {
 
     /// @notice Function to increase existing nft value data
     /// @dev Input validation must be done before calling
+    /// @dev Not sure about this function, may just bake the user update to the function and remove this
     /// @param nftId The nft to increase the value
     /// @param amount The amout to increase the value
     function _updateTreeAddValue(uint128 nftId, uint128 amount) internal virtual {
@@ -100,7 +101,7 @@ contract WindfallSegmentTree is WindfallState, Initializable {
 
     /// @notice Function to decrease existing nft value data
     /// @dev Input validation must be done before calling
-    /// @dev If token is being burned, call _updateTreeUserRemove instead
+    /// @dev Not sure about this function, may just bake the user update to the function and remove this
     /// @param nftId The nft to decrease the value
     /// @param amount The amout to decrease the value
     function _updateTreeSubtractValue(uint128 nftId, uint128 amount) internal virtual {
@@ -152,7 +153,6 @@ contract WindfallSegmentTree is WindfallState, Initializable {
         bytes16 target;
         uint128 cumValue;
 
-
         while (nodeChildren[parent].length > 0) {
             // Loop over the node children to find which branch value lies in
             (target, cumValue) = _loopNodeChildren(parent, cumValue, value); 
@@ -170,7 +170,6 @@ contract WindfallSegmentTree is WindfallState, Initializable {
         // We have found the node that contains the winner
         // Loop over the children of the node to find the winner
         return _loopNftChildren(parent, cumValue, value);
-
     }
 
     function _loopNodeChildren(bytes16 parentNode, uint128 cumValue, uint128 targetValue) internal view returns(bytes16, uint128) {
@@ -222,8 +221,9 @@ contract WindfallSegmentTree is WindfallState, Initializable {
         return users[id];
     }
 
-    // Function added for testing
-    // Allows tests to display the tree information
+    // Function used for testing, and will likely be removed before deployment
+    // Extracts the tree data and returns it
+    // Doesn't need gas optimization
     function GetTree() external view returns(Node[] memory, bytes16[] memory, bytes16[][] memory, uint128[][] memory) {
         Node[] memory tree = new Node[](nextNodeId);
         bytes16[] memory currentNode = new bytes16[](nextNodeId);
