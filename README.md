@@ -17,7 +17,7 @@ First thing to note is that there are 7 users entered into the tree. Each user i
 Looking at the below logs, Node 0 is the ROOT, and its Sum value is the total amount of entrees in the system. It can be found in the nodes mapping at bytes16 value: 0x043be0b0c1ac1239ef2943cb7fae6c7300000000000000000000000000000000. Its parent is the NULL value which is 0xbb4e1f8434f661d4c52cce6e51dba6eb00000000000000000000000000000000. The root node contains two node children and two nft children, since the MAX_CHILDREN is set to two at the moment. It's node children are Node 1 and Node 2, and you can see in Node 1 and 2 that both of their parents are Node 0. At first glance, it seems a bit off since the Sum of Node 1 and Node 2 aren't equal to the sum of Node zero, but that is due to Node 0 having its own children, NFT 0 and 1. The reason there are both Nfts and Nodes, and that each node has children of both is due to having to create the tree from the top down rather than from the bottom up. Most segment trees are built from the bottom up on an existing array, but that doesn't work here. 
 
 Another thing to note when searching through the tree is that new entrees are considered the low values in the tree. So a call to _searchTree with the same value input may result in different winners if more users are added between the calls. 
-
+```
 Ran 2 tests for test/WindfallSegementTree.t.sol:SegmentTreeTest
 [PASS] testAddingToTree() (gas: 755941)
 Logs:
@@ -80,7 +80,7 @@ Logs:
   6
   ]
 
-
+```
 
 
 ## Foundry
